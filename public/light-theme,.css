@@ -1,0 +1,8 @@
+body.light {
+    background-color: #ffffff;
+    color: #343a40;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #343a40;
+}
