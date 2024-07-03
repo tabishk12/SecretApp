@@ -7,9 +7,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #4e5154;
             font-family: Arial, sans-serif;
-            color: #343a40; /* Dark text color */
+            color: #343a40;
         }
         .container {
             margin-top: 4rem;
@@ -20,12 +19,12 @@
         }
         h1 {
             text-align: center;
-            color: #007bff; /* Blue title */
+            color: #007bff;
             margin-bottom: 30px;
         }
         .form-group label {
             font-weight: bold;
-            color: #007bff; /* Blue label */
+            color: #007bff;
         }
         input[type="text"],
         textarea {
@@ -41,19 +40,22 @@
             transition: background-color 0.3s ease;
         }
         .btn-primary:hover {
-            background-color: #0056b3; /* Darker shade of blue on hover */
+            background-color: #0056b3;
             border-color: #0056b3;
         }
         @media (max-width: 576px) {
             .container {
-                margin:4rem;
+                width: 80vw;
+            }
+            h1{
+               font-size: 2em;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <%- include('header.ejs') %>
+    <% include('header.ejs') %>
     <div class="container">
         <h1>Compose</h1>
         <form action="/compose" method="post">

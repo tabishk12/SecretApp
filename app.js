@@ -334,18 +334,20 @@ app.get("/user-secrets", async (req, res) => {
         if (!req.session.loggedIn) {
             return res.redirect("/login");
         }
-               const currentUser = await User.findById(req.session.userId);
-        const loggedInUser = await User.findById(req.session.userId).populate('secrets');
 
-        if (!loggedInUser) {
+        const currentUser = await User.findById(req.session.userId).populate('secrets');
+
+        if (!currentUser) {
             return res.render("error", { message: "User not found" });
         }
-        
-        if (!loggedInUser.secrets || loggedInUser.secrets.length === 0) {
-            return res.render("user_secrets", { user: loggedInUser, message: "No secrets found" });
-        }
 
-        res.render("user_secrets", {  currentUser:currentUser ,loggedIn: req.session.loggedIn,user: loggedInUser, secrets: loggedInUser.secrets });
+        res.render("user_secrets", {
+            currentUser: currentUser,
+            loggedIn: req.session.loggedIn,
+            user: currentUser, // Ensure user is passed here
+            secrets: currentUser.secrets,
+            message: currentUser.secrets.length ? null : "No secrets found"
+        });
     } catch (error) {
         console.error("Error fetching user secrets:", error);
         res.render("error", { message: "Error fetching user secrets" });
