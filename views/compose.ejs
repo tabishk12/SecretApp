@@ -47,15 +47,18 @@
             .container {
                 width: 80vw;
             }
-            h1{
-               font-size: 2em;
+            h1 {
+                font-size: 2em;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <% include('header.ejs') %>
+    <!-- Added background-color to visualize the div -->
+    <div style="background-color: aqua;">
+        <!-- Header -->
+        <%- include('header.ejs') %>
+    </div>
     <div class="container">
         <h1>Compose</h1>
         <form action="/compose" method="post">
